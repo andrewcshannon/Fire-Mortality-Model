@@ -12,3 +12,4 @@ library(sf)
 library(raster)
 library("tidyverse")
 ```
+![](imgs/StudyArea.svg)<!-- -->
