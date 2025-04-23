@@ -84,5 +84,18 @@ W_plots_dnbr[1:10,]
 summary(W_plots_dnbr$Layer_1)
 hist(W_plots_dnbr$Layer_1, main = "Distribution of Fire severity values across FTM plots - Wallow Fire 2011")
 
+# Rename dnbr value column
+colnames(W_plots_dnbr)[2] <- "dnbr"
+W_plots_dnbr[1:10,]
+
+# Add an ID column (row number) for a merge to the extracted values
+# Row numbers should match order of extracted value table 
+W_sf <- W_sf %>% mutate(id = row_number())
+names(W_sf)
+colnames(W_sf)[25] <- "ID"
+
+# Merge extracted dnbr / fire severity plot values to FTM data frame 
+W_join <- merge(x = W_sf, y = W_plots_dnbr, by = "ID", all = TRUE)
+
 ```
 ![](imgs/WallowFIre_Plots_Histogram.svg)<!-- -->
