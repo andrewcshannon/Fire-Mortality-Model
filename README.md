@@ -85,3 +85,4 @@ summary(W_plots_dnbr$Layer_1)
 hist(W_plots_dnbr$Layer_1, main = "Distribution of Fire severity values across FTM plots - Wallow Fire 2011")
 
 ```
+![](imgs/WallowFIre_Plots_Histogram.svg)<!-- -->
