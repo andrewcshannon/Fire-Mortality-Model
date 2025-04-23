@@ -51,4 +51,24 @@ ggplot() +
 ```
 ![](imgs/StudyArea.svg)<!-- -->
 
+```r
+# Read in MTBS fire severity maps for the 2011 Wallow Fire
+W_dnbr6 <- terra::rast("C:/Users/andre/Desktop/4FRI_practice/SCRPPLE/FireDataBundles/2011/az3360210944920110529_20110514_20120524_dnbr6.tif") %>%
+  terra::project("+proj=utm +zone=12")
+
+# Plot the fire severity class map with locations of FTM monitoring plots 
+cls <- data.frame(value=0:6, category=c("Background","Unburned to low","Low",
+                                        "Moderate","High","Increased Greenness",
+                                        "Non-Mapping Area"))
+levels(W_dnbr6) <- cls
+plot(W_dnbr6, all_levels=T,
+     plg=list( # parameters for drawing legend
+       title = "2011 Wallow Fire Severity",
+       #title.cex = 2, # Legend title size
+       cex = 1.25 # Legend text size
+     ))
+plot(st_geometry(W_sf), pch = 21, cex =2,col = 'black', bg='magenta' , lwd=3, add = T)
+
+```
+
 ![](imgs/WallowFireSev_withPlots.svg)<!-- -->
