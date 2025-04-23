@@ -13,3 +13,5 @@ library(raster)
 library("tidyverse")
 ```
 ![](imgs/StudyArea.svg)<!-- -->
+
+![](imgs/WallowFireSev_withPlots.svg)<!-- -->
