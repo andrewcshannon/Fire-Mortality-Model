@@ -72,3 +72,16 @@ plot(st_geometry(W_sf), pch = 21, cex =2,col = 'black', bg='magenta' , lwd=3, ad
 ```
 
 ![](imgs/WallowFireSev_withPlots.svg)<!-- -->
+
+```r
+# Extract plot-level dnbr values 
+W_dnbr <- terra::rast("C:/Users/andre/Desktop/4FRI_practice/SCRPPLE/FireDataBundles/2011/az3360210944920110529_20110514_20120524_dnbr.tif")%>%
+  terra::project("+proj=utm +zone=12")
+
+W_plots_dnbr <- terra::extract(W_dnbr, W_sf)
+W_plots_dnbr$Layer_1 <- as.numeric(W_plots_dnbr$Layer_1)
+W_plots_dnbr[1:10,]
+summary(W_plots_dnbr$Layer_1)
+hist(W_plots_dnbr$Layer_1, main = "Distribution of Fire severity values across FTM plots - Wallow Fire 2011")
+
+```
